@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
 
@@ -11,16 +11,20 @@ class SettingsError(ValueError):
     """Raised when settings loading or validation fails."""
 
 
+from dataclasses import dataclass, field, field
+
+
 @dataclass(slots=True)
 class Settings:
-    llm: dict[str, Any]
-    embedding: dict[str, Any]
-    vector_store: dict[str, Any]
-    retrieval: dict[str, Any]
-    rerank: dict[str, Any]
-    evaluation: dict[str, Any]
-    observability: dict[str, Any]
-    extras: dict[str, Any]
+    llm: dict[str, Any] = field(default_factory=dict)
+    embedding: dict[str, Any] = field(default_factory=dict)
+    vector_store: dict[str, Any] = field(default_factory=dict)
+    retrieval: dict[str, Any] = field(default_factory=dict)
+    rerank: dict[str, Any] = field(default_factory=dict)
+    evaluation: dict[str, Any] = field(default_factory=dict)
+    observability: dict[str, Any] = field(default_factory=dict)
+    splitter: dict[str, Any] = field(default_factory=dict)
+    extras: dict[str, Any] = field(default_factory=dict)
 
 
 def _get_nested(data: dict[str, Any], path: str) -> Any:
