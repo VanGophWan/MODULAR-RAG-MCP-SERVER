@@ -24,6 +24,10 @@ class PlaceholderLLM(BaseLLM):
 
 class LLMFactory:
     _default_builders: dict[str, Callable[[Settings], BaseLLM]] = {
+        "azure": lambda s: __import__("libs.llm.azure_llm", fromlist=["AzureLLM"]).AzureLLM(s),
+        "openai": lambda s: __import__("libs.llm.openai_llm", fromlist=["OpenAILLM"]).OpenAILLM(s),
+        "ollama": lambda s: __import__("libs.llm.ollama_llm", fromlist=["OllamaLLM"]).OllamaLLM(s),
+        "deepseek": lambda s: __import__("libs.llm.deepseek_llm", fromlist=["DeepSeekLLM"]).DeepSeekLLM(s),
         "azure": lambda s: PlaceholderLLM("azure", s.llm.get("model", "unknown")),
         "openai": lambda s: PlaceholderLLM("openai", s.llm.get("model", "unknown")),
         "ollama": lambda s: PlaceholderLLM("ollama", s.llm.get("model", "unknown")),

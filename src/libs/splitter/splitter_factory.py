@@ -37,6 +37,7 @@ class SplitterFactory:
     # Default registry – concrete implementations are imported lazily.
     _default_builders: dict[str, Callable[[Settings], Any]] = {
         "placeholder": lambda s: PlaceholderSplitter(),
+        "recursive": lambda s: __import__("libs.splitter.recursive_splitter", fromlist=["RecursiveSplitter"]).RecursiveSplitter()
         # Real implementations (recursive, fixed_length, etc.) will be added
         # in later phases (B7).
     }
