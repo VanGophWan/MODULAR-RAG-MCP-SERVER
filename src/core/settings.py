@@ -11,9 +11,6 @@ class SettingsError(ValueError):
     """Raised when settings loading or validation fails."""
 
 
-from dataclasses import dataclass, field, field
-
-
 @dataclass(slots=True)
 class Settings:
     llm: dict[str, Any] = field(default_factory=dict)
@@ -24,6 +21,7 @@ class Settings:
     evaluation: dict[str, Any] = field(default_factory=dict)
     observability: dict[str, Any] = field(default_factory=dict)
     splitter: dict[str, Any] = field(default_factory=dict)
+    vision_llm: dict[str, Any] = field(default_factory=dict)
     extras: dict[str, Any] = field(default_factory=dict)
 
 
@@ -45,6 +43,7 @@ def validate_settings(settings: Settings) -> None:
         "rerank": settings.rerank,
         "evaluation": settings.evaluation,
         "observability": settings.observability,
+        "vision_llm": settings.vision_llm,
     }
 
     required_fields = [
@@ -58,6 +57,8 @@ def validate_settings(settings: Settings) -> None:
         "rerank.backend",
         "evaluation.backends",
         "observability.enabled",
+        "vision_llm.provider",
+        "vision_llm.model",
     ]
 
     for field_path in required_fields:
@@ -85,6 +86,7 @@ def load_settings(path: str) -> Settings:
         rerank=raw.get("rerank") or {},
         evaluation=raw.get("evaluation") or {},
         observability=raw.get("observability") or {},
+        vision_llm=raw.get("vision_llm") or {},
         extras={k: v for k, v in raw.items() if k not in {
             "llm",
             "embedding",
@@ -93,6 +95,7 @@ def load_settings(path: str) -> Settings:
             "rerank",
             "evaluation",
             "observability",
+            "vision_llm",
         }},
     )
     validate_settings(settings)

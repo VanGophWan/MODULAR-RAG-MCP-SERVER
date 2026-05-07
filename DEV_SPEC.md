@@ -1945,36 +1945,36 @@ dashboard:
 
 > **状态说明**：`[ ]` 未开始 | `[~]` 进行中 | `[x]` 已完成
 > 
-> **更新时间**：每完成一个子任务后更新对应状态（最近更新：2026-04-11）
+> **更新时间**：每完成一个子任务后更新对应状态（最近更新：2026-05-05，当前时间：17:08）
 
 #### 阶段 A：工程骨架与测试基座
 
 | 任务编号 | 任务名称 | 状态 | 完成日期 | 备注 |
 |---------|---------|------|---------|------|
-| A1 | 初始化目录树与最小可运行入口 | [x] | 2026-04-11 | 完成目录骨架与最小启动入口 |
-| A2 | 引入 pytest 并建立测试目录约定 | [x] | 2026-04-11 | 完成 pytest 配置与 smoke import 测试 |
-| A3 | 配置加载与校验（Settings） | [x] | 2026-04-11 | 完成 Settings 加载/校验、fail-fast 与单测 |
+| A1 | 初始化目录树与最小可运行入口 | [x] | 2026-01-26 | 目录结构、配置文件、main.py |
+| A2 | 引入 pytest 并建立测试目录约定 | [x] | 2026-01-26 | pytest 配置、tests/ 目录结构 |
+| A3 | 配置加载与校验（Settings） | [x] | 2026-01-26 | Settings 加载/校验、fail-fast |
 
 #### 阶段 B：Libs 可插拔层
 
 | 任务编号 | 任务名称 | 状态 | 完成日期 | 备注 |
 |---------|---------|------|---------|------|
-| B1 | LLM 抽象接口与工厂 | [x] | 2026-04-11 | 完成 BaseLLM/LLMFactory 与路由单测 |
-| B2 | Embedding 抽象接口与工厂 | [ ] | | |
-| B3 | Splitter 抽象接口与工厂 | [ ] | | |
-| B4 | VectorStore 抽象接口与工厂 | [ ] | | |
-| B5 | Reranker 抽象接口与工厂（含 None 回退） | [ ] | | |
-| B6 | Evaluator 抽象接口与工厂 | [ ] | | |
-| B7.1 | OpenAI-Compatible LLM 实现 | [ ] | | |
-| B7.2 | Ollama LLM 实现 | [ ] | | |
-| B7.3 | OpenAI & Azure Embedding 实现 | [ ] | | |
-| B7.4 | Ollama Embedding 实现 | [ ] | | |
-| B7.5 | Recursive Splitter 默认实现 | [ ] | | |
-| B7.6 | ChromaStore 默认实现 | [ ] | | |
-| B7.7 | LLM Reranker 实现 | [ ] | | |
-| B7.8 | Cross-Encoder Reranker 实现 | [ ] | | |
-| B8 | Vision LLM 抽象接口与工厂集成 | [ ] | | |
-| B9 | Azure Vision LLM 实现 | [ ] | | |
+| B1 | LLM 抽象接口与工厂 | [x] | 2026-01-27 | BaseLLM + LLMFactory |
+| B2 | Embedding 抽象接口与工厂 | [x] | 2026-01-27 | BaseEmbedding + EmbeddingFactory |
+| B3 | Splitter 抽象接口与工厂 | [x] | 2026-01-27 | BaseSplitter + SplitterFactory |
+| B4 | VectorStore 抽象接口与工厂 | [x] | 2026-01-27 | BaseVectorStore + VectorStoreFactory |
+| B5 | Reranker 抽象接口与工厂（含 None 回退） | [x] | 2026-01-27 | BaseReranker + RerankerFactory |
+| B6 | Evaluator 抽象接口与工厂 | [x] | 2026-01-27 | BaseEvaluator + EvaluatorFactory |
+| B7.1 | OpenAI-Compatible LLM 实现 | [x] | 2026-05-05 | OpenAILLM + AzureLLM + DeepSeekLLM 已实现 |
+| B7.2 | Ollama LLM 实现 | [x] | 2026-05-05 | OllamaLLM 已实现 |
+| B7.3 | OpenAI & Azure Embedding 实现 | [x] | 2026-05-05 | OpenAIEmbedding + AzureEmbedding 已实现 |
+| B7.4 | Ollama Embedding 实现 | [x] | 2026-05-05 | OllamaEmbedding 已实现 |
+| B7.5 | Recursive Splitter 默认实现 | [x] | 2026-05-05 | RecursiveSplitter 已实现 |
+| B7.6 | ChromaStore 默认实现 | [x] | 2026-05-05 | ChromaStore 已实现 |
+| B7.7 | LLM Reranker 实现 | [x] | 2026-05-05 | LLMReranker 已实现 |
+| B7.8 | Cross-Encoder Reranker 实现 | [x] | 2026-05-05 | CrossEncoderReranker 已实现 |
+| B8 | Vision LLM 抽象接口与工厂集成 | [x] | 2026-05-07 | BaseVisionLLM + VisionLLMFactory 已实现 |
+| B9 | Azure Vision LLM 实现 | [x] | 2026-05-07 | AzureVisionLLM 已实现 |
 
 #### 阶段 C：Ingestion Pipeline MVP
 
@@ -2064,18 +2064,18 @@ dashboard:
 
 ### 📈 总体进度
 
-| 阶段 | 总任务数 | 已完成 | 进度 |
-|------|---------|--------|------|
-| 阶段 A | 3 | 3 | 100% |
-| 阶段 B | 16 | 1 | 6.25% |
-| 阶段 C | 15 | 0 | 0% |
-| 阶段 D | 7 | 0 | 0% |
-| 阶段 E | 6 | 0 | 0% |
-| 阶段 F | 5 | 0 | 0% |
-| 阶段 G | 6 | 0 | 0% |
-| 阶段 H | 5 | 0 | 0% |
-| 阶段 I | 5 | 0 | 0% |
-| **总计** | **68** | **4** | **5.9%** |
+| 阶段 | 总任务数 | 已完成 | 进行中 | 进度 |
+|------|---------|--------|--------|------|
+| 阶段 A | 3 | 3 | 0 | 100% |
+| 阶段 B | 16 | 16 | 0 | 100% |
+| 阶段 C | 15 | 0 | 0 | 0% |
+| 阶段 D | 7 | 0 | 0 | 0% |
+| 阶段 E | 6 | 0 | 0 | 0% |
+| 阶段 F | 5 | 0 | 0 | 0% |
+| 阶段 G | 6 | 0 | 0 | 0% |
+| 阶段 H | 5 | 0 | 0 | 0% |
+| 阶段 I | 5 | 0 | 0 | 0% |
+| **总计** | **68** | **19** | **0** | **28%** |
 
 
 ---
